@@ -312,7 +312,6 @@ const getProfile = asyncHandler(async (req, res) => {
 
 // POST /api/auth/loginWithPassword  { userId | email | phone, password }
 const loginWithPassword = asyncHandler(async (req, res) => {
-<<<<<<< HEAD
   const userId = str(req.body.userId);
   const email = str(req.body.email)?.toLowerCase();
   const phone = str(req.body.phone);
@@ -323,28 +322,6 @@ const loginWithPassword = asyncHandler(async (req, res) => {
   }
 
   const existingUser = await loadWithSecrets(userId ? { userId } : email ? { email } : { phone });
-=======
-  const { userId, email, password } = req.body;
-
-  // Either userId or email is required along with password
-  if ((!userId && !email) || !password) {
-    return res
-      .status(400)
-      .json(
-        new apiResponse(
-          400,
-          null,
-          "UserId or Email, and password are required"
-        )
-      );
-  }
-
-  try {
-    // 🔹 Find user by userId OR email
-    const existingUser = await User.findOne({
-      $or: [{ userId }, { email }],
-    });
->>>>>>> dd9eb1a1ff157368a833f34d1914de13060d6b42
 
   // same message for "not found" and "wrong password" (does not reveal which accounts exist)
   if (!existingUser || !existingUser.password) {
