@@ -1,0 +1,955 @@
+{
+	"info": {
+		"_postman_id": "holyvision-complete-api-2026",
+		"name": "HolyVision India - Complete API Collection",
+		"description": "Complete API collection for YHS India HolyVision Backend - All endpoints including Member Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "holyvision-2026"
+	},
+	"item": [
+		{
+			"name": "🏥 Health Check",
+			"item": [
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"health"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🔐 Authentication",
+			"item": [
+				{
+					"name": "Register or Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\",\n  \"email\": \"user@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/registerOrLogin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"registerOrLogin"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login with Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/loginWithPassword",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"loginWithPassword"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					}
+				},
+				{
+					"name": "Reset Password (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"user123\",\n  \"password\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/resetPassword",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resetPassword"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "👥 Member Management",
+			"item": [
+				{
+					"name": "Register Member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Rajesh Kumar\",\n  \"companyName\": \"Tech Solutions Pvt Ltd\",\n  \"email\": \"rajesh@example.com\",\n  \"whatsappNo\": \"9876543210\",\n  \"phoneNumber\": \"9876543210\",\n  \"memberCategory\": \"Corporate Membership\",\n  \"profilePhoto\": \"https://example.com/photo.jpg\",\n  \"country\": \"India\",\n  \"state\": \"Delhi\",\n  \"city\": \"New Delhi\",\n  \"pincode\": \"110001\",\n  \"referrer\": {\n    \"name\": \"Amit Sharma\",\n    \"mobileNo\": \"9123456789\"\n  },\n  \"idProof\": {\n    \"idName\": \"Aadhar Card\",\n    \"idImage\": \"https://example.com/aadhaar.jpg\"\n  },\n  \"transactionId\": \"UTR123456789\",\n  \"isChecked\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login Member (Phone)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"memberId\": \"MEM000001\",\n  \"phoneNumber\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login Member (MemberID)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"memberId\": \"MEM000001\",\n  \"email\": \"rajesh@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Member Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/member/details?memberId=MEM000001&phoneNumber=9876543210",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"details"
+							],
+							"query": [
+								{
+									"key": "memberId",
+									"value": "MEM000001"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "9876543210"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Public: Member ID + registered phone (or email) are both required. Admin token: any one is enough."
+					}
+				},
+				{
+					"name": "Get Member by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "member_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All Members (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/member/all/members?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"all",
+								"members"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "active"
+								},
+								{
+									"key": "memberCategory",
+									"value": "Gold"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Member Statistics (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/member/stats/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								"stats",
+								"all"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Member (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Rajesh Kumar Updated\",\n  \"memberCategory\": \"Platinum\",\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "member_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Member Status (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"active\",\n  \"remarks\": \"Payment verified\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/:id/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "member_id_here"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Member (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"member",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "member_id_here"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📁 Upload",
+			"item": [
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🗂️ Category",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/category",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Category (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Category Name\",\n  \"description\": \"Category Description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/category",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🖼️ Gallery",
+			"item": [
+				{
+					"name": "Get All Galleries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/gallery",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"gallery"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Gallery (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Meeting with Governor\",\n  \"galleryType\": \"guests\",\n  \"description\": \"Dr. Zaidi with the Hon'ble Governor\",\n  \"date\": \"2026-05-01\",\n  \"images\": [\n    \"https://example.com/g1.jpg\",\n    \"https://example.com/g2.jpg\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/gallery",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"gallery"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🎉 Events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/event",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"event"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Event (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Annual Charity Event 2026\",\n  \"subtitle\": \"Celebrating International Peace Day\",\n  \"eventType\": \"Charity\",\n  \"date\": \"2026-12-31\",\n  \"time\": \"10:00 AM\",\n  \"location\": \"Lucknow\",\n  \"description\": \"Join us for our annual charity program\",\n  \"banner\": \"https://example.com/banner.jpg\",\n  \"highlights\": [\n    \"Global Peace Awards\",\n    \"Youth Conference\"\n  ],\n  \"isPaid\": true,\n  \"fee\": 500,\n  \"registrationOpen\": true,\n  \"attachments\": [\n    \"https://example.com/photo1.jpg\",\n    \"https://www.youtube.com/watch?v=VIDEOID\"\n  ],\n  \"isActive\": true,\n  \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/event",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"event"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📰 News",
+			"item": [
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/news",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"news"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📝 Blogs",
+			"item": [
+				{
+					"name": "Get All Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/blog",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"blog"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Blog Title\",\n  \"content\": \"Blog Content\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/blog",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"blog"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "💬 Testimonials",
+			"item": [
+				{
+					"name": "Get All Testimonials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/testimonial",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"testimonial"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "👥 Team",
+			"item": [
+				{
+					"name": "Get All Team Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/team",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"team"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📋 Schemes",
+			"item": [
+				{
+					"name": "Get All Schemes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/scheme",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"scheme"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🎨 Home Banner",
+			"item": [
+				{
+					"name": "Get All Banners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/home-banner",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"home-banner"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📧 Contact Us",
+			"item": [
+				{
+					"name": "Submit Contact Form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"\",\n  \"subject\": \"Membership query\",\n  \"message\": \"Your message here\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contact-us",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"contact-us"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🤝 Join Us",
+			"item": [
+				{
+					"name": "Submit Join Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"9876543210\",\n  \"designation\": \"Teacher\",\n  \"city\": \"Lucknow\",\n  \"state\": \"Uttar Pradesh\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/join-us",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"join-us"
+							]
+						}
+					}
+				},
+				{
+					"name": "Event Registration (website)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"EVENT_MONGO_ID\",\n  \"name\": \"Asha Verma\",\n  \"email\": \"asha@example.com\",\n  \"phone\": \"9876543210\",\n  \"whatsappNo\": \"9876543210\",\n  \"designation\": \"Teacher\",\n  \"city\": \"Lucknow\",\n  \"country\": \"India\",\n  \"transactionId\": \"UTR123 (only for paid events)\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/join-us",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"join-us"
+							]
+						},
+						"description": "Fee is taken from the event. Paid events need transactionId. One registration per phone/email per event."
+					}
+				}
+			]
+		},
+		{
+			"name": "📊 Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"dashboard"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📢 Media Coverage",
+			"item": [
+				{
+					"name": "Get All Media Coverage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"media-covrage"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5001",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

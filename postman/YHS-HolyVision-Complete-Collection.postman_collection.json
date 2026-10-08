@@ -1,0 +1,1418 @@
+{
+	"info": {
+		"_postman_id": "yhs-holyvision-complete-2026",
+		"name": "YHS HolyVision India - Complete API Collection 2026",
+		"description": "Complete Postman collection for all YHS HolyVision Backend APIs - Authentication, Member Management, Content Management, and more",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "🏥 Health Check",
+			"item": [
+				{
+					"name": "API Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/health",
+							"host": ["{{base_url}}"],
+							"path": ["api", "health"]
+						},
+						"description": "Check if API server is running"
+					}
+				}
+			]
+		},
+		{
+			"name": "🔐 Authentication",
+			"item": [
+				{
+					"name": "Register or Login (OTP)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\",\n  \"userId\": \"user123\",\n  \"password\": \"mypassword123\",\n  \"name\": \"Rajesh Kumar\",\n  \"gender\": \"Male\",\n  \"role\": \"User\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/registerOrLogin",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "registerOrLogin"]
+						},
+						"description": "Register new user or login existing user - sends OTP"
+					}
+				},
+				{
+					"name": "Register User (Direct)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\",\n  \"userId\": \"user123\",\n  \"password\": \"mypassword123\",\n  \"name\": \"Rajesh Kumar\",\n  \"email\": \"rajesh@example.com\",\n  \"gender\": \"Male\",\n  \"role\": \"User\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/registerUser",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "registerUser"]
+						},
+						"description": "Direct registration - no OTP required, returns token immediately"
+					}
+				},
+				{
+					"name": "Login with Password (Email or UserId)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"rajesh@example.com\",\n  \"password\": \"mypassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/loginWithPassword",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "loginWithPassword"]
+						},
+						"description": "Login with email OR userId + password"
+					}
+				},
+				{
+					"name": "Login with Password (UserId)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"user123\",\n  \"password\": \"mypassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/loginWithPassword",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "loginWithPassword"]
+						}
+					}
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\",\n  \"otp\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/verifyOtp",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "verifyOtp"]
+						}
+					}
+				},
+				{
+					"name": "Send OTP",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/sendOtp",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "sendOtp"]
+						}
+					}
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/resendOtp",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "resendOtp"]
+						}
+					}
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/getAllUsers",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "getAllUsers"]
+						}
+					}
+				},
+				{
+					"name": "Get User by UserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/user/:userId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "user", ":userId"],
+							"variable": [{"key": "userId", "value": "user123"}]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/update/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "update", ":id"],
+							"variable": [{"key": "id", "value": "user_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Password",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"user123\",\n  \"password\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/createPassword",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "createPassword"]
+						}
+					}
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"oldpass123\",\n  \"newPassword\": \"newpass123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/updatePassword",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "updatePassword"]
+						}
+					}
+				},
+				{
+					"name": "Update User Role",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": \"Admin\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/updateRoll/:userId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "updateRoll", ":userId"],
+							"variable": [{"key": "userId", "value": "user123"}]
+						}
+					}
+				},
+				{
+					"name": "Block User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"isBlock\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/blockUser/:userId",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "blockUser", ":userId"],
+							"variable": [{"key": "userId", "value": "user123"}]
+						}
+					}
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/auth/delete/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "delete", ":id"],
+							"variable": [{"key": "id", "value": "user_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "👥 Member Management",
+			"item": [
+				{
+					"name": "Register Member",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Rajesh Kumar\",\n  \"companyName\": \"Tech Solutions Pvt Ltd\",\n  \"whatsappNo\": \"9876543210\",\n  \"phoneNumber\": \"9876543210\",\n  \"memberCategory\": \"Gold\",\n  \"profilePhoto\": \"https://example.com/photo.jpg\",\n  \"country\": \"India\",\n  \"state\": \"Delhi\",\n  \"city\": \"New Delhi\",\n  \"pincode\": \"110001\",\n  \"referrer\": {\n    \"name\": \"Amit Sharma\",\n    \"mobileNo\": \"9123456789\"\n  },\n  \"idProof\": {\n    \"idName\": \"Aadhaar Card\",\n    \"idImage\": \"https://example.com/aadhaar.jpg\"\n  },\n  \"upiId\": \"rajesh@paytm\",\n  \"isChecked\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login Member (Phone)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phoneNumber\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "login"]
+						}
+					}
+				},
+				{
+					"name": "Login Member (MemberID)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"memberId\": \"MEM000001\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "login"]
+						}
+					}
+				},
+				{
+					"name": "Get Member Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/member/details?phoneNumber=9876543210",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "details"],
+							"query": [
+								{"key": "phoneNumber", "value": "9876543210"},
+								{"key": "memberId", "value": "MEM000001", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Member by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", ":id"],
+							"variable": [{"key": "id", "value": "member_mongodb_id"}]
+						}
+					}
+				},
+				{
+					"name": "Get All Members (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/member/all/members?page=1&limit=10&search=&status=active&memberCategory=Gold",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "all", "members"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"},
+								{"key": "search", "value": ""},
+								{"key": "status", "value": "active"},
+								{"key": "memberCategory", "value": "Gold"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Member Statistics (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/member/stats/all",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", "stats", "all"]
+						}
+					}
+				},
+				{
+					"name": "Update Member (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fullName\": \"Rajesh Kumar Updated\",\n  \"memberCategory\": \"Platinum\",\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", ":id"],
+							"variable": [{"key": "id", "value": "member_id"}]
+						}
+					}
+				},
+				{
+					"name": "Update Member Status (Admin)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/member/:id/status",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", ":id", "status"],
+							"variable": [{"key": "id", "value": "member_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Member (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/member/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "member", ":id"],
+							"variable": [{"key": "id", "value": "member_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📁 Upload",
+			"item": [
+				{
+					"name": "Upload File/Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [{"key": "file", "type": "file", "src": []}]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/upload",
+							"host": ["{{base_url}}"],
+							"path": ["api", "upload"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🗂️ Category",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/category",
+							"host": ["{{base_url}}"],
+							"path": ["api", "category"]
+						}
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/category/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "category", ":id"],
+							"variable": [{"key": "id", "value": "category_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Category (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Category Name\",\n  \"description\": \"Category Description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/category",
+							"host": ["{{base_url}}"],
+							"path": ["api", "category"]
+						}
+					}
+				},
+				{
+					"name": "Update Category (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Name\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/category/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "category", ":id"],
+							"variable": [{"key": "id", "value": "category_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Category (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/category/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "category", ":id"],
+							"variable": [{"key": "id", "value": "category_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🖼️ Gallery",
+			"item": [
+				{
+					"name": "Get All Galleries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/gallery",
+							"host": ["{{base_url}}"],
+							"path": ["api", "gallery"]
+						}
+					}
+				},
+				{
+					"name": "Get Gallery by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/gallery/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "gallery", ":id"],
+							"variable": [{"key": "id", "value": "gallery_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Gallery (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Gallery Title\",\n  \"images\": [\"url1\", \"url2\"]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/gallery",
+							"host": ["{{base_url}}"],
+							"path": ["api", "gallery"]
+						}
+					}
+				},
+				{
+					"name": "Update Gallery (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/gallery/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "gallery", ":id"],
+							"variable": [{"key": "id", "value": "gallery_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Gallery (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/gallery/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "gallery", ":id"],
+							"variable": [{"key": "id", "value": "gallery_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🎉 Events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/event?page=1&limit=10&type=upcoming",
+							"host": ["{{base_url}}"],
+							"path": ["api", "event"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"},
+								{"key": "type", "value": "upcoming", "description": "upcoming/completed"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Event by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/event/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "event", ":id"],
+							"variable": [{"key": "id", "value": "event_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Event (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Annual Charity Event 2026\",\n  \"eventType\": \"Charity\",\n  \"date\": \"2026-12-31\",\n  \"description\": \"Join us for our annual charity program\",\n  \"attachments\": [\"image_url1\", \"image_url2\"],\n  \"isActive\": true,\n  \"order\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/event",
+							"host": ["{{base_url}}"],
+							"path": ["api", "event"]
+						}
+					}
+				},
+				{
+					"name": "Update Event (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Event Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/event/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "event", ":id"],
+							"variable": [{"key": "id", "value": "event_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Event (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/event/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "event", ":id"],
+							"variable": [{"key": "id", "value": "event_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📰 News",
+			"item": [
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/news",
+							"host": ["{{base_url}}"],
+							"path": ["api", "news"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📝 Blogs",
+			"item": [
+				{
+					"name": "Get All Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/blog",
+							"host": ["{{base_url}}"],
+							"path": ["api", "blog"]
+						}
+					}
+				},
+				{
+					"name": "Get Blog by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/blog/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "blog", ":id"],
+							"variable": [{"key": "id", "value": "blog_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Blog Title\",\n  \"content\": \"Blog Content\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/blog",
+							"host": ["{{base_url}}"],
+							"path": ["api", "blog"]
+						}
+					}
+				},
+				{
+					"name": "Update Blog (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/blog/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "blog", ":id"],
+							"variable": [{"key": "id", "value": "blog_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Blog (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/blog/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "blog", ":id"],
+							"variable": [{"key": "id", "value": "blog_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "💬 Testimonials",
+			"item": [
+				{
+					"name": "Get All Testimonials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/testimonial",
+							"host": ["{{base_url}}"],
+							"path": ["api", "testimonial"]
+						}
+					}
+				},
+				{
+					"name": "Get Testimonial by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/testimonial/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "testimonial", ":id"],
+							"variable": [{"key": "id", "value": "testimonial_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Testimonial (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Customer Name\",\n  \"message\": \"Testimonial message\",\n  \"rating\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/testimonial",
+							"host": ["{{base_url}}"],
+							"path": ["api", "testimonial"]
+						}
+					}
+				},
+				{
+					"name": "Update Testimonial (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\": \"Updated message\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/testimonial/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "testimonial", ":id"],
+							"variable": [{"key": "id", "value": "testimonial_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Testimonial (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/testimonial/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "testimonial", ":id"],
+							"variable": [{"key": "id", "value": "testimonial_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "👥 Team",
+			"item": [
+				{
+					"name": "Get All Team Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/team",
+							"host": ["{{base_url}}"],
+							"path": ["api", "team"]
+						}
+					}
+				},
+				{
+					"name": "Get Team Member by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/team/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "team", ":id"],
+							"variable": [{"key": "id", "value": "team_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Team Member (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Team Member Name\",\n  \"designation\": \"Manager\",\n  \"bio\": \"Short bio\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/team",
+							"host": ["{{base_url}}"],
+							"path": ["api", "team"]
+						}
+					}
+				},
+				{
+					"name": "Update Team Member (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Name\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/team/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "team", ":id"],
+							"variable": [{"key": "id", "value": "team_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Team Member (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/team/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "team", ":id"],
+							"variable": [{"key": "id", "value": "team_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📋 Schemes",
+			"item": [
+				{
+					"name": "Get All Schemes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/scheme",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheme"]
+						}
+					}
+				},
+				{
+					"name": "Get Scheme by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/scheme/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheme", ":id"],
+							"variable": [{"key": "id", "value": "scheme_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Scheme (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Scheme Title\",\n  \"description\": \"Description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/scheme",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheme"]
+						}
+					}
+				},
+				{
+					"name": "Update Scheme (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/scheme/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheme", ":id"],
+							"variable": [{"key": "id", "value": "scheme_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Scheme (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/scheme/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheme", ":id"],
+							"variable": [{"key": "id", "value": "scheme_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🎨 Home Banner",
+			"item": [
+				{
+					"name": "Get All Banners",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/home-banner",
+							"host": ["{{base_url}}"],
+							"path": ["api", "home-banner"]
+						}
+					}
+				},
+				{
+					"name": "Get Banner by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/home-banner/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "home-banner", ":id"],
+							"variable": [{"key": "id", "value": "banner_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Banner (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Banner Title\",\n  \"imageUrl\": \"https://example.com/image.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/home-banner",
+							"host": ["{{base_url}}"],
+							"path": ["api", "home-banner"]
+						}
+					}
+				},
+				{
+					"name": "Update Banner (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/home-banner/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "home-banner", ":id"],
+							"variable": [{"key": "id", "value": "banner_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Banner (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/home-banner/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "home-banner", ":id"],
+							"variable": [{"key": "id", "value": "banner_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📧 Contact Us",
+			"item": [
+				{
+					"name": "Submit Contact Form",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"9876543210\",\n  \"message\": \"Your message here\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contact-us",
+							"host": ["{{base_url}}"],
+							"path": ["api", "contact-us"]
+						}
+					}
+				},
+				{
+					"name": "Get All Contact Requests (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/contact-us",
+							"host": ["{{base_url}}"],
+							"path": ["api", "contact-us"]
+						}
+					}
+				},
+				{
+					"name": "Get Contact by ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/contact-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "contact-us", ":id"],
+							"variable": [{"key": "id", "value": "contact_id"}]
+						}
+					}
+				},
+				{
+					"name": "Update Contact (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"resolved\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/contact-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "contact-us", ":id"],
+							"variable": [{"key": "id", "value": "contact_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Contact (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/contact-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "contact-us", ":id"],
+							"variable": [{"key": "id", "value": "contact_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🤝 Join Us",
+			"item": [
+				{
+					"name": "Submit Join Request",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"9876543210\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/join-us",
+							"host": ["{{base_url}}"],
+							"path": ["api", "join-us"]
+						}
+					}
+				},
+				{
+					"name": "Get All Join Requests (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/join-us",
+							"host": ["{{base_url}}"],
+							"path": ["api", "join-us"]
+						}
+					}
+				},
+				{
+					"name": "Get Join Request by ID (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/join-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "join-us", ":id"],
+							"variable": [{"key": "id", "value": "join_id"}]
+						}
+					}
+				},
+				{
+					"name": "Update Join Request (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"approved\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/join-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "join-us", ":id"],
+							"variable": [{"key": "id", "value": "join_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Join Request (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/join-us/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "join-us", ":id"],
+							"variable": [{"key": "id", "value": "join_id"}]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📊 Dashboard",
+			"item": [
+				{
+					"name": "Get Dashboard Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/dashboard",
+							"host": ["{{base_url}}"],
+							"path": ["api", "dashboard"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📢 Media Coverage",
+			"item": [
+				{
+					"name": "Get All Media Coverage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage",
+							"host": ["{{base_url}}"],
+							"path": ["api", "media-covrage"]
+						}
+					}
+				},
+				{
+					"name": "Get Media Coverage by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "media-covrage", ":id"],
+							"variable": [{"key": "id", "value": "media_id"}]
+						}
+					}
+				},
+				{
+					"name": "Create Media Coverage (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Media Title\",\n  \"description\": \"Description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage",
+							"host": ["{{base_url}}"],
+							"path": ["api", "media-covrage"]
+						}
+					}
+				},
+				{
+					"name": "Update Media Coverage (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{"key": "Content-Type", "value": "application/json"},
+							{"key": "Authorization", "value": "Bearer {{auth_token}}"}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Title\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "media-covrage", ":id"],
+							"variable": [{"key": "id", "value": "media_id"}]
+						}
+					}
+				},
+				{
+					"name": "Delete Media Coverage (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Authorization", "value": "Bearer {{auth_token}}"}],
+						"url": {
+							"raw": "{{base_url}}/api/media-covrage/:id",
+							"host": ["{{base_url}}"],
+							"path": ["api", "media-covrage", ":id"],
+							"variable": [{"key": "id", "value": "media_id"}]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5001",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
